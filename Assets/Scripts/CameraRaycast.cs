@@ -5,14 +5,25 @@ using UnityEngine.EventSystems;
 
 public class CameraRaycast : MonoBehaviour {
 
+    
     //Script is for generating a raycast from the camera in order to interact with various objects in the scene.
 	void Start () {
 		
 	}
 	
     
-	public void OnPointerDown(PointerEventData evdata)
+	void Update ()
     {
-        print(evdata.pointerPress);
+        if (Input.GetMouseButtonDown(0)) {
+            Vector3 fwd = transform.TransformDirection(Vector3.forward);
+            RaycastHit hit;
+
+            if (Physics.Raycast(transform.position, fwd, out hit, 10))
+            {
+
+                print(hit.transform.gameObject.name);
+            }
+        }
+        
     }
 }
