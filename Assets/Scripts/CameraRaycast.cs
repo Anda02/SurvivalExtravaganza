@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class CameraRaycast : MonoBehaviour {
 
-    
+    GameObject currenthit;
     //Script is for generating a raycast from the camera in order to interact with various objects in the scene.
 	void Start () {
 		
@@ -20,7 +20,7 @@ public class CameraRaycast : MonoBehaviour {
 
             if (Physics.Raycast(transform.position, fwd, out hit, 10))
             {
-
+                currenthit = hit.transform.gameObject;
                 print(hit.transform.gameObject.name);
             }
         }
